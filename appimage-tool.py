@@ -67,7 +67,8 @@ def delete_launch_appimage(name_dot_dektop, name_icon):
 
 def main():
     parser = argparse.ArgumentParser(description="AppImage Installer")
-    parser.add_argument('--appimage', required=True, help='AppImage path')
+    parser.add_argument('--appimage', required=True, help='AppImage path') # Sguiero quitarle el 'required'
+    #Añadir el argumento para eliminacion
     parser.add_argument('--name', help='Application name')
     parser.add_argument('--icon', help='Icon path .png o .svg')
 
