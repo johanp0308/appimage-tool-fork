@@ -61,7 +61,7 @@ def delete_launch_appimage(name_dot_dektop, name_icon):
     if( (dektop_dir / (name_dot_dektop+".desktop")).exists() ):
         os.remove(dektop_dir / (name_dot_dektop+".desktop"))
         
-    if( (icon_dir / (name_icon + ".*"))):
+    if( (icon_dir / (name_icon + ".*")).exists() ):
         os.remove(icon_dir / (name_icon + ".*"))
     os.system("update-desktop-database ~/.local/share/applications/")
 
