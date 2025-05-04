@@ -54,6 +54,17 @@ Terminal=false
     # Recargar la base de datos de los escritorios para que el sistema reconozca el nuevo .desktop
     os.system("update-desktop-database ~/.local/share/applications/")
 
+def delete_launch_appimage(name_dot_dektop, name_icon):
+    dektop_dir = Path.home() / ".local/share/applications"
+    icon_dir = Path.home() / ".local/share/icons"
+    
+    if( (dektop_dir / (name_dot_dektop+".desktop")).exists() ):
+        os.remove(dektop_dir / (name_dot_dektop+".desktop"))
+        
+    if( (icon_dir / (name_icon + ".*"))):
+        os.remove(icon_dir / (name_icon + ".*"))
+    os.system("update-desktop-database ~/.local/share/applications/")
+
 def main():
     parser = argparse.ArgumentParser(description="AppImage Installer")
     parser.add_argument('--appimage', required=True, help='AppImage path')
@@ -86,7 +97,7 @@ def main():
         icon=copy_path_icon if copy_path_icon else None
     )
 
-    print("✅ AppImage installed successfully.")
+    print("✅ AppImage installed successfully.")  
 
 if __name__ == "__main__":
     main()
